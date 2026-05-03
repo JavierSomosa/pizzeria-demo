@@ -38,6 +38,23 @@
 
   $('logout-btn').addEventListener('click', logout);
 
+  // ── Botón de acceso rápido (demo) ────────────────────────────
+  const quickBtn = document.createElement('button');
+  quickBtn.type        = 'button';
+  quickBtn.className   = 'quick-login-btn';
+  quickBtn.textContent = '⚡ Acceso rápido (demo)';
+  quickBtn.addEventListener('click', () => {
+    $('l-user').value = ADMIN_USER;
+    $('l-pass').value = ADMIN_PASS;
+    loginForm.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+  });
+  // Insertar debajo del botón de login
+  loginForm.appendChild(quickBtn);
+
+  // ── Navigation ───────────────────────────────────────────────
+  // ⚠️ Declarado antes de showApp() para evitar ReferenceError
+  let currentView = 'products';
+
   function showApp() {
     loginPage.style.display = 'none';
     app.classList.add('visible');
@@ -45,9 +62,6 @@
   }
 
   if (isLoggedIn()) showApp();
-
-  // ── Navigation ───────────────────────────────────────────────
-  let currentView = 'products';
 
   document.querySelectorAll('.nav-item[data-view]').forEach(item => {
     item.addEventListener('click', () => renderView(item.dataset.view));
