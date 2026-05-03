@@ -151,19 +151,19 @@
 
     tbody.innerHTML = products.map(p => `
       <tr data-id="${p.id}">
-        <td>
+        <td data-label="">
           <img class="product-thumb" src="${p.image}" alt="${p.name}"
                onerror="this.src='data:image/svg+xml,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'48\\' height=\\'48\\'><rect fill=\\'%23ffeedd\\' width=\\'48\\' height=\\'48\\'/><text x=\\'50%25\\' y=\\'55%25\\' dominant-baseline=\\'middle\\' text-anchor=\\'middle\\' font-size=\\'24\\'>🍕</text></svg>'" />
         </td>
-        <td style="font-weight:600">${p.name}</td>
-        <td><span class="badge badge-cat">${catLabel(p.category)}</span></td>
-        <td style="font-weight:700;color:var(--primary)">${fmt(p.price)}</td>
-        <td>
+        <td data-label="Nombre" style="font-weight:600">${p.name}</td>
+        <td data-label="Categoría"><span class="badge badge-cat">${catLabel(p.category)}</span></td>
+        <td data-label="Precio" style="font-weight:700;color:var(--primary)">${fmt(p.price)}</td>
+        <td data-label="Estado">
           <button class="toggle-avail ${p.available ? 'available' : 'soldout'}" data-id="${p.id}">
             ${p.available ? '✅ Disponible' : '🚫 Agotado'}
           </button>
         </td>
-        <td>
+        <td class="actions-td">
           <div class="actions-cell">
             <button class="btn btn-ghost btn-sm edit-btn" data-id="${p.id}">✏️ Editar</button>
             <button class="btn btn-danger btn-sm delete-btn" data-id="${p.id}">🗑 Borrar</button>
