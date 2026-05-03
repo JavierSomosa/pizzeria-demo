@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Admin – Pizzería Demo</title>
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>" />
+</head>
+<body>
+
+<!-- ── Login Page ─────────────────────────────────────────── -->
+<div id="login-page">
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="login-badge">Panel Admin</div>
+      <h1>🍕 Pizzería <span>Demo</span></h1>
+      <p>Ingresá con tus credenciales de administrador</p>
+    </div>
+    <form id="login-form">
+      <div class="form-group">
+        <label for="l-user">Usuario</label>
+        <input id="l-user" type="text" placeholder="admin" autocomplete="username" />
+      </div>
+      <div class="form-group">
+        <label for="l-pass">Contraseña</label>
+        <input id="l-pass" type="password" placeholder="••••••••" autocomplete="current-password" />
+      </div>
+      <button type="submit" class="login-btn">Ingresar →</button>
+      <p class="login-error" id="login-error"></p>
+    </form>
+    <p style="text-align:center;margin-top:20px;font-size:.8rem;color:#bbb">
+      <a href="index.html">← Volver al sitio</a>
+    </p>
+  </div>
+</div>
+
+<!-- ── App (after login) ──────────────────────────────────── -->
+<div id="app">
+
+  <!-- Sidebar -->
+  <aside id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">🍕 <span>Pizzería</span> Demo</div>
+      <div class="sidebar-sub">Panel de administración</div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-item active" data-view="products" id="nav-products">
+        <span class="nav-icon">🍕</span> Productos
+      </div>
+      <div class="nav-item" data-view="orders" id="nav-orders">
+        <span class="nav-icon">📦</span> Pedidos
+      </div>
+      <div class="nav-item" data-view="settings" id="nav-settings">
+        <span class="nav-icon">⚙️</span> Configuración
+      </div>
+      <div class="nav-item" style="margin-top:8px">
+        <span class="nav-icon">🌐</span>
+        <a href="index.html" target="_blank">Ver sitio</a>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <button id="logout-btn">🔓 Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main id="main-content">
+    <div class="top-bar">
+      <h2 id="view-title">Productos</h2>
+      <div class="top-bar-actions" id="top-bar-actions">
+        <!-- Dynamic -->
+      </div>
+    </div>
+    <div class="content-area" id="content-area">
+      <!-- Dynamic -->
+    </div>
+  </main>
+
+</div>
+
+<!-- ── Admin Modal (shared) ──────────────────────────────── -->
+<div id="admin-modal-overlay">
+  <div class="admin-modal-box">
+    <div class="admin-modal-header">
+      <h3 id="admin-modal-title">Modal</h3>
+      <button id="close-admin-modal">✕</button>
+    </div>
+    <div class="admin-modal-body" id="admin-modal-body">
+      <!-- Dynamic -->
+    </div>
+    <div class="admin-modal-footer" id="admin-modal-footer">
+      <!-- Dynamic -->
+    </div>
+  </div>
+</div>
+
+<!-- Supabase SDK (UMD) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<!-- Credenciales del proyecto (reemplazá los valores en este archivo) -->
+<script src="js/supabase-config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
